@@ -1,0 +1,20 @@
+*{
+    text-align: center;
+}
+
+header { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 10px;
+    border-style: solid;
+}
+
+.container {
+    position: fixed;
+    margin-left: 775px;
+    margin-right: 775px;
+    margin-top: 200px;
+    border: 10px;
+    border-style: solid;
+}
