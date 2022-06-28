@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="script.js" />
   </head>
   <body>
     <header>
@@ -12,7 +13,7 @@
         <button>Scores here</button>
     </a>
 
-      <h2>Timer</h2>
+      <h2 id="timerElem">Timer</h2>
     </header>
 
     <div class = 'container'>
@@ -29,8 +30,8 @@
       </div>
 
       <div class="controls">
-        <button id="startBtn">Start</button>
-        <button id="nextBtn">Next</button>
+        <button id="startBtn" onclick="startQuiz()">Start</button> <!---->
+        <!-- <button id="nextBtn">Next</button> -->
       </div>
 
     </div>
