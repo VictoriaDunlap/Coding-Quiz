@@ -17,21 +17,19 @@
     </header>
 
     <div class = 'container'>
-      <div id="questionContainer" class= "hidden">
+      <div id="questionContainer" class= "hide">
         <div id="question">Question</div>
-      </div>
-  
-
-      <div id="answerBtn" class="btnGrid">
-        <button class="btn" id = "btn1">Answer 1</button>
-        <button class="btn" id = "btn2">Answer 2</button>
-        <button class="btn" id = "btn3">Answer 3</button>
-        <button class="btn" id = "btn4">Answer 4</button>
+        <div id="answerBtn" class="btnGrid">
+          <button class="btn" id = "btn1">Answer 1</button>
+          <button class="btn" id = "btn2">Answer 2</button>
+          <button class="btn" id = "btn3">Answer 3</button>
+          <button class="btn" id = "btn4">Answer 4</button>
+        </div>
       </div>
 
       <div class="controls">
-        <button id="startBtn" class= "hidden" onclick="startQuiz()">Start</button> <!---->
-        <!-- <button id="nextBtn">Next</button> -->
+        <button id="startBtn" class= "startbtn btn" onclick="startQuiz()">Start</button> <!---->
+        <button id="nextBtn" class= "nextbtn btn hide">Next</button>
       </div>
 
     </div>

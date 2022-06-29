@@ -1,5 +1,6 @@
-*{
-    text-align: center;
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 header { 
@@ -11,10 +12,36 @@ header {
 }
 
 .container {
-    position: fixed;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 80%;
+    background-color: white;
+    box-shadow: 0 0 10px 2px;
+
+}
+
+.btnGrid {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+}    
+
+.btn {
+    background-color: blueviolet;
+}
+
+.hide {
+    display: none;
+}
+
+/*    position: fixed;
     margin-left: 775px;
     margin-right: 775px;
     margin-top: 200px;
     border: 10px;
-    border-style: solid;
-}
+    border-style: solid; */

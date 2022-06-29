@@ -12,15 +12,6 @@ var questionId = document.getElementById("question")
 
 var shuffledQuestions, currentQuestionIndex
 
-function hideQuestion() {
-    // var question = document.getElementById("question");
-    if (questionToAnswer.style.display === "none") {
-        questionToAnswer.style.display = "block";
-    } else {
-        questionToAnswer.style.display = "none";
-    }
-  }
-
 var questionToAnswer = [ // array to circulate through q's/a's
     {
         questiion: 'What are the desired results in a program?',
@@ -34,13 +25,25 @@ var questionToAnswer = [ // array to circulate through q's/a's
     }
 ]
 
+// function hideQuestion() {
+//     // var question = document.getElementById("question");
+//     if (questionToAnswer.style.display === "none") {
+//         questionToAnswer.style.display = "block";
+//     } else {
+//         questionToAnswer.style.display = "none";
+//     }
+// }
+
+//   hideQuestion(questionToAnswer);
+
+
 startBtn.addEventListener('click', startQuiz);
 
 function startQuiz() { // starts quiz 
-    startBtn.classList.add('hidden');
+    startBtn.classList.add('hide');
     shuffledQuestions = questionToAnswer.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
-    questionContainer.classList.remove('hidden');
+    questionContainer.classList.remove('hide');
     setNextQuestion();
     // var startBtn = document.getElementById("startBtn"); // var that grabs the id 
     // startBtn.addEventListener('click', (event) => { // event for onclick to start quiz
