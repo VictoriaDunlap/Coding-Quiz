@@ -12,9 +12,20 @@ var questionId = document.getElementById("question")
 
 var shuffledQuestions, currentQuestionIndex
 
+startBtn.addEventListener('click', startQuiz);
+
+function startQuiz() { // starts quiz 
+    startBtn.classList.add('hide');
+    shuffledQuestions = questionToAnswer.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0;
+    questionContainer.classList.remove('hide');
+    setNextQuestion();
+    console.log("Started");
+}
+
 var questionToAnswer = [ // array to circulate through q's/a's
     {
-        questiion: 'What are the desired results in a program?',
+        question: 'What are the desired results in a program?',
         answers: [
             {text: 'output', correct:true},
             {text: 'input', correct:false},
@@ -25,44 +36,30 @@ var questionToAnswer = [ // array to circulate through q's/a's
     }
 ]
 
-// function hideQuestion() {
-//     // var question = document.getElementById("question");
-//     if (questionToAnswer.style.display === "none") {
-//         questionToAnswer.style.display = "block";
-//     } else {
-//         questionToAnswer.style.display = "none";
-//     }
-// }
-
-//   hideQuestion(questionToAnswer);
-
-
-startBtn.addEventListener('click', startQuiz);
-
-function startQuiz() { // starts quiz 
-    startBtn.classList.add('hide');
-    shuffledQuestions = questionToAnswer.sort(() => Math.random() - .5);
-    currentQuestionIndex = 0;
-    questionContainer.classList.remove('hide');
-    setNextQuestion();
-    // var startBtn = document.getElementById("startBtn"); // var that grabs the id 
-    // startBtn.addEventListener('click', (event) => { // event for onclick to start quiz
-    //     var usersAnswer = document.querySelectorAll('btn'); // var that grabs whatever btn the user chooses
-    //     console.log(startBtn, usersAnswer);
-        console.log("Started");
-        // i think i need a function that brings in the object and sifts through the answer that is chosen to compare to the correct answer
-        // if answer chosen is correct it moves to another question and the page logs a point 
-        // if answer chosen is wrong it moves to another question and subtracts 15 seconds from the timer 
-    }
-//     )
-// }
-
 function setNextQuestion() {
+    reset()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function showQuestion(questionToAnswer) {
-    questionId.innerText = questionToAnswer.questionToAnswer
+function showQuestion(question) { // not changing my question -- showing as undefined 
+    questionId.innerText = question.question
+    question.answers.forEach(answers => {
+        var button = document.createElement('button')
+        button.innerText = answers.text
+        button.classList.add('btn')
+        if (answers.correct) {
+            button.dataset.correct = answers.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerBtns.appendChild(button)
+    })
+
+}
+
+function reset() {
+   while (answerBtns.firstChild) {
+    answerBtns.removeChild(answerBtns.firstChild)
+   }
 }
 
 function selectAnswer(){
@@ -70,16 +67,21 @@ function selectAnswer(){
 }
 
 function timer() { // timer element function 
+    var spanTimer = document.createElement('span')
+    spanTimer.appendChild
     var secondsLeft = 75;
     var timerInterval = setInterval(function() {
         secondsLeft--;
-        timerElem.textContent = "Time: " + secondsLeft;
-
+        spanTimer.textContent = "Time: " + secondsLeft;
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
             sendMessage();
         }
+        // answerBtns.appendChild(button)
+        timerElem.appendChild(spanTimer)
     })
+    console.log(timerInterval())
+
 }
 
 function sendMessage() { // message that has people add initials and send them to the scoreboard
@@ -93,3 +95,24 @@ function sendMessage() { // message that has people add initials and send them t
 // Arrays in Javascript can be used to store... numbers and strings, other arrays, booleans, all of the above
 // String values must be enclosed within ____ when being assigned to variables. commas, curly brackets, quotes, parantheses
 // A very useful tool during development and debugging printing content to the debugger... Javascript, Terminal, onsole log, for loops  
+
+
+// function hideQuestion() {
+//     // var question = document.getElementById("question");
+//     if (questionToAnswer.style.display === "none") {
+//         questionToAnswer.style.display = "block";
+//     } else {
+//         questionToAnswer.style.display = "none";
+//     }
+// }
+
+//   hideQuestion(questionToAnswer);
+
+  // var startBtn = document.getElementById("startBtn"); // var that grabs the id 
+    // startBtn.addEventListener('click', (event) => { // event for onclick to start quiz
+    //     var usersAnswer = document.querySelectorAll('btn'); // var that grabs whatever btn the user chooses
+    //     console.log(startBtn, usersAnswer);
+ 
+    // i think i need a function that brings in the object and sifts through the answer that is chosen to compare to the correct answer
+    // if answer chosen is correct it moves to another question and the page logs a point 
+    // if answer chosen is wrong it moves to another question and subtracts 15 seconds from the timer 
