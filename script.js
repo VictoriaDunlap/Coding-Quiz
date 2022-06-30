@@ -32,16 +32,15 @@ var questionToAnswer = [ // array to circulate through q's/a's
             {text: 'display', correct:false},
             {text: 'function', correct:false}
         ],
-        // correctAnswer: "output", // if it matches the chosen answer, then you move forward 
     }
 ]
 
-function setNextQuestion() {
+function setNextQuestion() { // sets next question  
     reset()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function showQuestion(question) { // not changing my question -- showing as undefined 
+function showQuestion(question) { // shows question based on correct answer or not 
     questionId.innerText = question.question
     question.answers.forEach(answers => {
         var button = document.createElement('button')
@@ -63,7 +62,11 @@ function reset() {
 }
 
 function selectAnswer(){
-
+    if (answer === true) {
+        setNextQuestion()
+    } else {
+        timer(-15);
+     }
 }
 
 function timer() { // timer element function 
@@ -113,6 +116,5 @@ function sendMessage() { // message that has people add initials and send them t
     //     var usersAnswer = document.querySelectorAll('btn'); // var that grabs whatever btn the user chooses
     //     console.log(startBtn, usersAnswer);
  
-    // i think i need a function that brings in the object and sifts through the answer that is chosen to compare to the correct answer
     // if answer chosen is correct it moves to another question and the page logs a point 
     // if answer chosen is wrong it moves to another question and subtracts 15 seconds from the timer 
