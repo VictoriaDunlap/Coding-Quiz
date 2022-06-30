@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="script.js" />
+  
   </head>
   <body>
     <header>
     <a href="score.html">
-        <button>Scores here</button>
+        <button id="scores">Scores here</button>
     </a>
-      <h2 id="timerElem">Timer</h2>
+      <h2 id="timerElem"></h2>
     </header>
     <div class = 'container'>
       <div id="questionContainer" class= "hide">
         <h4 id="question">Question</h4>
-        <div id="answerBtn" class="btnGrid hide">
+        <div id="answerBtn" class="btnGrid">
           <button class="btn" id = "btn1">Answer 1</button>
           <button class="btn" id = "btn2">Answer 2</button>
           <button class="btn" id = "btn3">Answer 3</button>
@@ -26,7 +26,7 @@
       </div>
 <!-- onclick="startQuiz()" -->
       <div class="controls">
-        <button id="startBtn" class= "startbtn btn" >Start</button> 
+        <button id="startBtn" class= "startbtn btn">Start</button> 
         <button id="nextBtn" class= "nextbtn btn hide">Next</button>
       </div>
     </div>

@@ -6,8 +6,9 @@ var btnGrid = document.querySelector("btnGrid")
 var btn = document.querySelector("btn")
 var controls = document.querySelector("controls")
 // var nextBtn = document.getElementById("nextBtn")
-var timerElem = document.querySelector("timerElem")
+var timerElem = document.querySelector("#timerElem")
 var questionId = document.getElementById("question")
+var scores = document.getElementById("scores")
 // question.hidden();
 
 var shuffledQuestions, currentQuestionIndex
@@ -20,6 +21,7 @@ function startQuiz() { // starts quiz
     currentQuestionIndex = 0;
     questionContainer.classList.remove('hide');
     setNextQuestion();
+    timer();
     console.log("Started");
 }
 
@@ -62,7 +64,7 @@ function reset() {
 }
 
 function selectAnswer(){
-    if (answer === true) {
+    if (answers === true) {
         setNextQuestion()
     } else {
         timer(-15);
@@ -71,26 +73,25 @@ function selectAnswer(){
 
 function timer() { // timer element function 
     var spanTimer = document.createElement('span')
-    spanTimer.appendChild
     var secondsLeft = 75;
-    var timerInterval = setInterval(function() {
+    setInterval(function() {
         secondsLeft--;
         spanTimer.textContent = "Time: " + secondsLeft;
         if (secondsLeft === 0) {
-            clearInterval(timerInterval);
+            clearInterval();
             sendMessage();
         }
-        // answerBtns.appendChild(button)
         timerElem.appendChild(spanTimer)
-    })
-    console.log(timerInterval())
+    }, 1000)
 
 }
 
 function sendMessage() { // message that has people add initials and send them to the scoreboard
-    timerElem.textContent = "Nice! please enter your initials below to see the score board.";
+    questionContainer.textContent = "Nice! please enter your initials below to see the score board.";
     input.setAttribute("type", "text");
     document.body.appendChild(input);
+    questionContainer.appendChild(scores);
+    
 }
 
 // Commonly used data types DO NOT include... strings, booleans, alerts, numbers
