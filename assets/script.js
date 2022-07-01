@@ -11,7 +11,7 @@ var questionId = document.getElementById("question")
 var scores = document.getElementById("scores")
 // question.hidden();
 
-var shuffledQuestions, currentQuestionIndex
+// var shuffledQuestions, currentQuestionIndex
 
 startBtn.addEventListener('click', startQuiz);
 
@@ -63,12 +63,27 @@ function reset() {
    }
 }
 
-function selectAnswer(){
-    if (answers === true) {
-        setNextQuestion()
+function selectAnswer(event){
+    var selectedbtn = event.target
+    var correct = selectedbtn.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerBtns.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+}
+
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.add('correct')
     } else {
-        timer(-15);
-     }
+        element.add('wrong')
+    }
+}
+
+function clearStatusClass(element) {
+    element.remove('correct')
+    element.remove('wrong')
 }
 
 function timer() { // timer element function 
